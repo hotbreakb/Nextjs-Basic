@@ -1,34 +1,22 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Introduction
 
-## Getting Started
+## 라이브러리 vs 프레임워크
+- 라이브러리: 내가 라이브러리를 호출한다.
+- 프레임워크: 프레임워크가 내 코드를 호출한다.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
+## React vs NextJS
+- 라이브러리의 예) create-react-app
+  - 라우팅을 하기 위해서 React Router를 사용해야 한다.
+  - client-side rendering: 브라우저가 유저가 보는 UI를 만든다. 이때 `<div id="root">`를 제외한 모든 것은 자바스크립트다.
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById("root")
+);
+```
+- 프레임워크의 예) Next.js
+  - ReactDOM을 import하지 않아도 index.ts에서 **알아서** 보여준다.
+  - pages 안에 파일을 만들면 이름에 따라 **라우팅**이 된다. 이때 컴포넌트 이름은 중요하지 않다. `export default`로 명시된 것이 화면에 보인다.
+  - useState 같은 훅을 사용하지 않고 `<h1>Hello</h1>`처럼 적을 땐 React를 import하지 않아도 된다.
