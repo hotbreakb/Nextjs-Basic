@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {useRouter} from "next/router";
 
 export default function Navbar() {
   const router = useRouter();
@@ -21,7 +21,7 @@ export default function Navbar() {
         }
 
         .active {
-          color: white;
+          color: blue;
         }
       `}</style>
     </nav>
