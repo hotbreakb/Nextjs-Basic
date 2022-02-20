@@ -17,6 +17,7 @@ export default function Home({
   const onClick = (id: number) => {
     router.push(`/movies/${id}`);
   };
+
   return (
     <div className="container">
       <Seo title="Home" />
