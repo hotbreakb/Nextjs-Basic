@@ -1,6 +1,6 @@
 import NavBar from "./NavBar/NavBar";
 
-export default function Layout({ children }) {
+export default function Layout({children}) {
   return (
     <>
       <NavBar />

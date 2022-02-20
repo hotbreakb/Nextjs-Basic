@@ -27,3 +27,7 @@ ReactDOM.render(
   document.getElementById("root")
 );
 ```
+
+### redirects() vs rewrites()
+- redirects: source -> destination으로 이동하면서 URL이 바뀐다.
+- rewrites: source -> destination으로 이동하지만 URL이 바뀌진 않는다. 이 특성을 활용해서 API key를 숨길 수 있다.
