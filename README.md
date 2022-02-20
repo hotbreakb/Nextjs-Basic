@@ -31,3 +31,10 @@ ReactDOM.render(
 ### redirects() vs rewrites()
 - redirects: source -> destination으로 이동하면서 URL이 바뀐다.
 - rewrites: source -> destination으로 이동하지만 URL이 바뀌진 않는다. 이 특성을 활용해서 API key를 숨길 수 있다.
+
+### loading을 보여줄 것인가 말 것인가?!
+1. 안 보여준다🙅‍♀️: `index.tsx`에서 `export async function getServerSideProps({}: GetServerSideProps)`을 사용한다. 백엔드에서 fetch한 결과를 HTML로 변환한 후에 보여준다. 이후에는 React.js가 props를 받아들여서 결과를 이용한다. 즉, **API 응답이 오기 전까지는 하얀 화면**이 보인다는 뜻이다.
+2. 보여준다🙆‍♀️: API 응답이 오기 전에 loading 화면을 보여주고 이후에 결과를 표시한다.
+
+### `getServerSideProps`에 요청 주소 넣기
+- 프론트에서는 `/api/movies`라고 입력해도 URL에 알아서 `http://localhost:3000`가 들어가기 때문에 요청이 되지만, 백엔드에서는 모르기 때문에 입력해줘야 한다.

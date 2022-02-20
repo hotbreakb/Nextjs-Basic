@@ -19,5 +19,5 @@ module.exports = {
         destination: `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.MOVIE_API_KEY}${encodeURIComponent("&")}:params`,
       }
     ]
-  }
+  },
 }

@@ -1,5 +1,5 @@
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 
 type popularMovie = {
@@ -8,22 +8,13 @@ type popularMovie = {
   poster_path: string;
 };
 
-export default function Home() {
-  const [movies, setMovies] = useState<popularMovie[]>([]);
-  useEffect(() => {
-    (async () => {
-      const { results } = await (await fetch(`/api/movies`)).json();
-      // const json = await response.json();
-
-      setMovies(results);
-    })();
-  }, []);
-
+export default function Home({
+  results,
+}: InferGetServerSidePropsType<GetServerSideProps>) {
   return (
     <div className="container">
       <Seo title="Home" />
-      {!movies && <h4>Loading ...</h4>}
-      {movies?.map((movie) => (
+      {results?.map((movie: popularMovie) => (
         <div className="movie" key={movie.id}>
           <div className="imageWrap">
             <Image
@@ -60,4 +51,15 @@ export default function Home() {
       `}</style>
     </div>
   );
+}
+
+export async function getServerSideProps({}: GetServerSideProps) {
+  const { results } = await (
+    await fetch(`http://localhost:3000/api/movies`)
+  ).json();
+  return {
+    props: {
+      results,
+    },
+  };
 }
