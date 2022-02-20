@@ -101,6 +101,14 @@ ReactDOM.render(
   </Link>
 </h4>
 ```
+
+2. `next.config.js`에서 `rewrites` 추가하기
+```javascript
+{
+  source: "/api/movies/:id",
+  destination: `https://api.themoviedb.org/3/movie/:id?api_key=${process.env.MOVIE_API_KEY}${encodeURIComponent("&")}:params`,
+}
+```
   <blockquote>
 </blockquote>
 </details>

@@ -14,15 +14,27 @@ export default function Home({
   results,
 }: InferGetServerSidePropsType<GetServerSideProps>) {
   const router = useRouter();
-  const onClick = (id: number) => {
-    router.push(`/movies/${id}`);
+  const onClick = (id: number, title: string) => {
+    router.push(
+      {
+        pathname: `/movies/${id}`,
+        query: {
+          title,
+        },
+      },
+      `/movies/${id}` // as: 사용자에게 보이는 링크
+    );
   };
 
   return (
     <div className="container">
       <Seo title="Home" />
       {results?.map((movie: popularMovie) => (
-        <div onClick={() => onClick(movie.id)} className="movie" key={movie.id}>
+        <div
+          onClick={() => onClick(movie.id, movie.original_title)}
+          className="movie"
+          key={movie.id}
+        >
           <div className="imageWrap">
             <Image
               className="img"
@@ -33,7 +45,15 @@ export default function Home({
             />
           </div>
           <h4>
-            <Link href={`/movies/${movie.id}`}>
+            <Link
+              href={{
+                pathname: `/movies/${movie.id}`,
+                query: {
+                  title: movie.original_title,
+                },
+              }}
+              as={`/movies/${movie.id}`}
+            >
               <a>{movie.original_title}</a>
             </Link>
           </h4>
